@@ -27,4 +27,3 @@ data.insert(0, "filename", data.pop("filename"))
 
 # Save the result as a new CSV
 data.to_csv(csv_input_path.replace(".csv", "_percentages.csv"), index=False)
-data.to_csv("/predict/count_percentages.csv", index=False)
