@@ -16,7 +16,7 @@ data.iloc[:, 2:] = data.iloc[:, 2:].apply(pd.to_numeric, errors='coerce')
 # Calculate row sums
 row_sums = data.iloc[:, 2:].sum(axis=1)
 
-Convert counts to percentages
+# Convert counts to percentages
 with warnings.catch_warnings():
     warnings.simplefilter(action='ignore', category=DeprecationWarning)
     warnings.simplefilter(action='ignore', category=FutureWarning)
