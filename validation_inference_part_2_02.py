@@ -27,23 +27,3 @@ data.insert(0, "filename", data.pop("filename"))
 
 # Save the result as a new CSV
 data.to_csv(csv_input_path.replace(".csv", "_percentages.csv"), index=False)
-
-# Initialize an empty dictionary for storing the results
-result = {}
-
-# Iterate through the DataFrame
-for index, row in data.iterrows():
-    filename = row['filename']
-    class_1_value = row['class_1']
-    class_3_value = row['class_3']
-    class_7_value = row['class_7']
-    
-    # Check the conditions and store the result in the dictionary
-    if class_1_value > 3.5 and class_3_value > 0.85 and class_7_value > 0.07:
-        result[filename] = 1.0
-    else:
-        result[filename] = 0.0
-
-# Save the dictionary as a JSON file
-with open('/predict/classification.json', 'w') as outfile:
-    json.dump(result, outfile, indent=4)
