@@ -173,10 +173,10 @@ def main(args):
         class_counts_list = [base_name] + [class_counts_dict[i] for i in range(args.num_classes)]
 
         # Append the class counts list to the DataFrame
-        with warnings.catch_warnings():
-            warnings.simplefilter(action='ignore', category=DeprecationWarning)
-            warnings.simplefilter(action='ignore', category=FutureWarning) # append will be removed in pandas 2.0.0
-            all_class_counts_df = all_class_counts_df.append(pd.Series(class_counts_list, index=all_class_counts_df.columns), ignore_index=True)
+        # with warnings.catch_warnings():
+        #     warnings.simplefilter(action='ignore', category=DeprecationWarning)
+        #     warnings.simplefilter(action='ignore', category=FutureWarning) # append will be removed in pandas 2.0.0
+        all_class_counts_df = all_class_counts_df.append(pd.Series(class_counts_list, index=all_class_counts_df.columns), ignore_index=True)
 
         # Save the aggregated DataFrame to a CSV file
         os.makedirs(os.path.dirname(csv_filename), exist_ok=True)

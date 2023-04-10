@@ -17,13 +17,14 @@ data.iloc[:, 2:] = data.iloc[:, 2:].apply(pd.to_numeric, errors='coerce')
 row_sums = data.iloc[:, 2:].sum(axis=1)
 
 # Convert counts to percentages
-with warnings.catch_warnings():
-    warnings.simplefilter(action='ignore', category=DeprecationWarning)
-    warnings.simplefilter(action='ignore', category=FutureWarning)
-    data.iloc[:, 2:] = data.iloc[:, 2:].div(row_sums, axis=0) * 100
+# with warnings.catch_warnings():
+#     warnings.simplefilter(action='ignore', category=DeprecationWarning)
+#     warnings.simplefilter(action='ignore', category=FutureWarning)
+data.iloc[:, 2:] = data.iloc[:, 2:].div(row_sums, axis=0) * 100
 
 # Add filename column to output
 data.insert(0, "filename", data.pop("filename"))
 
 # Save the result as a new CSV
 data.to_csv(csv_input_path.replace(".csv", "_percentages.csv"), index=False)
+data.to_csv("/predict/count_percentages.csv", index=False)
